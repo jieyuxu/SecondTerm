@@ -12,3 +12,11 @@ d = csv.DictReader(fObj) #students dict
 
 gObj = open("courses.csv")
 g = csv.DictReader(gObj) #course dict
+
+for student in d:
+    ourDB.'peeps'.insert_one( student )
+
+for course in g:
+    ourDB.'courses'.insert_one( course )
+
+
