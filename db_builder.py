@@ -15,10 +15,12 @@ gObj = open("courses.csv")
 g = csv.DictReader(gObj) #course dict
 
 for student in d:
-    gObj = open("courses.csv")
-    g = csv.DictReader(gObj)
-    for course in g:
-        if student['id'] == course['id']:
-            student[ course['code'] ] = course['mark']
+    student = student.update({'courses':[]})    
     print student
+    print "whats in student"
+    print student
+    for course in g:
+        print course
+        if student['id'] == course['id']:
+            student[courses] = student[courses].append({ course['code'] : course['mark']})
     ourDB.students.insert_one( student )
