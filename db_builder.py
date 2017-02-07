@@ -16,22 +16,21 @@ t = csv.DictReader(tObj) #teachers dict
                                           
 for teacher in t:
     teacher['students'] = []
-                                                                                                                                                                                                            
-    for student in d:
-        student['courses'] = []
-        gObj = open("courses.csv")
-        g = csv.DictReader(gObj) 
-                   
-        #print student.keys() 
-                                                                                                                                                                                                                
-        for course in g:
-                       
-            #print course                                                                                                                                                                                       
+    gObj = open("courses.csv")
+    g = csv.DictReader(gObj) 
+    
+    for course in g:                                                                                                                                                                                                     
+        for student in d:
+            student['courses'] = []
+                #print course                                                                                                                                                                                       
             if student['id'] == course['id']:
                 student['courses'].append({ course['code'] : course['mark']})
-                if course['code'] == teacher['code']:
-                    teacher['students'].append(student['name'])
+
+        if course['code'] == teacher['code']:
+            teacher['students'].append(student['name'])
                                              
         print student
         ourDB.students.insert_one( student )
+
+    print teacher
     ourDB.teachers.insert_one( teacher )
