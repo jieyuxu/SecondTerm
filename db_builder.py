@@ -11,16 +11,16 @@ ourDB = server['SecondTerm']
 fObj = open("peeps.csv") 
 d = csv.DictReader(fObj) #students dict
 
-gObj = open("courses.csv")
-g = csv.DictReader(gObj) #course dict
-
 for student in d:
-    student = student.update({'courses':[]})    
-    print student
-    print "whats in student"
-    print student
+    student['courses'] = []   
+    #print "student: ", student
+    
+    #you have to re-open this before ever itteration
+    gObj = open("courses.csv")
+    g = csv.DictReader(gObj) #course dict
     for course in g:
-        print course
+        #print "course: ", course
         if student['id'] == course['id']:
-            student[courses] = student[courses].append({ course['code'] : course['mark']})
+            student['courses'].append( { course['code']: course['mark'] } )
+    #print "adding this student doc to db: ", student
     ourDB.students.insert_one( student )

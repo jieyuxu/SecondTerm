@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import csv
 
 #connect to server on lisa
-server = MongoClient('lisa.stuy.edu')
+server = MongoClient('homer.stuy.edu')
 #server = MongoClient()
 
 #open (or create) db
