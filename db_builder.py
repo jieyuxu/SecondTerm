@@ -11,9 +11,6 @@ d = csv.DictReader(fObj) #students dict
 
 tObj = open("teachers.csv")
 t = csv.DictReader(tObj)
-
-for student in d:
-    student['courses'] = []
                                                                                                                                                                                                       
 for student in d:
     student['courses'] = []
