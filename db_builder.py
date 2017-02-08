@@ -1,20 +1,19 @@
-from pymongo import MongoClient                                                                                                                                                                             
-import csv                                                                                                                                                                                                  
-                                                                                                                                                                                                            
-#connect to server on lisa                                                                                                                                                                                  
-server = MongoClient('lisa.stuy.edu')                                                                                                                                                                       
-#server = MongoClient()                                                                                                                                                                                     
-                                                                                                                                                                                                            
-#open (or create) db                                                                                                                                                                                        
-ourDB = server['SecondTerm']                                                                                                                                                                                
-                                                                                                                                                                                                            
-fObj = open("peeps.csv")                                                                                                                                                                                    
-d = csv.DictReader(fObj) #students dict   
+from pymongo import MongoClient
+import csv
+#connect to server on lisa
+server = MongoClient('lisa.stuy.edu')
+#server = MongoClient()
+#open (or create) db
+ourDB = server['SecondTerm']
+fObj = open("peeps.csv")
 
-tObj = open("teachers.csv")                                                                                                                                                                                    
-t = csv.DictReader(tObj) #teachers dict                                                                                                                                                                      
-                                          
+d = csv.DictReader(fObj) #students dict
 
+tObj = open("teachers.csv")
+t = csv.DictReader(tObj)
+
+for student in d:
+    student['courses'] = []
                                                                                                                                                                                                       
 for student in d:
     student['courses'] = []
@@ -40,3 +39,4 @@ for student in d:
 
     print teacher
     #ourDB.teachers.insert_one( teacher )
+
