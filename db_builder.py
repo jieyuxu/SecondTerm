@@ -9,8 +9,10 @@ server = MongoClient('lisa.stuy.edu')
 ourDB = server['SecondTerm']                                                                                                                                                                                
                                                                                                                                                                                                              
 fObj = open("peeps.csv")                                                                                                                                                                                    
-d = csv.DictReader(fObj) #students dict                                                                                                                                                                     
-                                                                                                                                                                                                             
+d = csv.DictReader(fObj) #students dict
+
+tObj = open("teachers.csv")
+t = csv.DictReader(tObj)                                                                                                                                                                                                
                                                                                                                                                                                                              
 for student in d:                                                                                                                                                                                           
     student['courses'] = []                                                                                                                                                                                 
